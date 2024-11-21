@@ -155,13 +155,9 @@ fi
 # if a GUID partition table is used, so reset the partition type to 0700.
 VFATPARTNUM=$(echo ${VFATPART} | sed -n 's/.*p\([0-9]\+\)$/\1/p')
 VFATPARTDEV=$(echo ${VFATPART//\/mapper/} | sed 's/p[0-9]*$//')
-file  "${VFATPARTNUM}p${VFATPARTNUM}"
-ls -l "${VFATPARTDEV}p${VFATPARTNUM}"
-ls -l /dev
-if [ -b "${VFATPARTDEV}p${VFATPARTNUM}" ]; then
-echo "Before sgdisk"
+if [ -b "${VFATPARTDEV}p${VFATPARTNUM}" -o -b "${VFATPARTDEV}${VFATPARTNUM}" ]; then
+echo /usr/sbin/sgdisk --typecode="${VFATPARTNUM}:0700" ${VFATPARTDEV}
 /usr/sbin/sgdisk --typecode="${VFATPARTNUM}:0700" ${VFATPARTDEV}
-echo "After sgdisk"
 fi
 
 /usr/sbin/sgdisk -p ${VFATPARTDEV}
