@@ -156,6 +156,8 @@ fi
 VFATPARTNUM=$(echo ${VFATPART} | sed -n 's/.*p\([0-9]\+\)$/\1/p')
 VFATPARTDEV=$(echo ${VFATPART//\/mapper/} | sed 's/p[0-9]*$//')
 file  "${VFATPARTNUM}p${VFATPARTNUM}"
+ls -l "${VFATPARTNUM}p${VFATPARTNUM}"
+ls -l /dev
 if [ -b "${VFATPARTDEV}p${VFATPARTNUM}" ]; then
 echo "Before sgdisk"
 /usr/sbin/sgdisk --typecode="${VFATPARTNUM}:0700" ${VFATPARTDEV}
