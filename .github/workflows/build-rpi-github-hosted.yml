@@ -89,7 +89,7 @@ jobs:
       run: |
         version_major=${{ inputs.version_major }}
         version_major=${version_major%k}
-        case $version_major in
+        case ${{ inputs.version_major }} in
           *k) ## Kitten
             release_url="https://repo.almalinux.org/almalinux-kitten/almalinux-kitten-release-latest-${version_major}.aarch64.rpm"
             container_version="${version_major}-kitten"
