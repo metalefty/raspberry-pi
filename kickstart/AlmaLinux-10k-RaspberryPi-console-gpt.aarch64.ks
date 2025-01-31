@@ -7,6 +7,7 @@ rootpw --plaintext --lock almalinux
 repo --name="baseos"      --mirrorlist="https://kitten.mirrors.almalinux.org/mirrorlist/10-kitten/baseos"
 repo --name="appstream"   --mirrorlist="https://kitten.mirrors.almalinux.org/mirrorlist/10-kitten/appstream"
 repo --name="raspberrypi" --mirrorlist="https://kitten.mirrors.almalinux.org/mirrorlist/10-kitten/raspberrypi"
+repo --name="raspi-build" --baseurl="https://build.almalinux.org/pulp/content/builds/AlmaLinux-Kitten-10-aarch64-25949-br/"
 
 # install
 keyboard us --xlayouts=us --vckeymap=us
